@@ -15,5 +15,12 @@ namespace GlobalJobSearch.Processors
 
             return JobDescriptionRepository.AddJobDescriptionToDB(jobDescription);
         }
+
+        public static bool GetCompanyName()
+        {
+            //Processing
+
+            return JobDescriptionRepository.getCompanyName();
+        }
     }
 }

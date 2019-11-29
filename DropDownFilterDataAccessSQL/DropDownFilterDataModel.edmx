@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="section8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'section8.S8U26.Campus' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Campus">
+          <Property Name="CampusID" Type="varchar" MaxLength="2" />
+          <Property Name="CampusName" Type="varchar" MaxLength="24" />
+        </EntityType>-->
+        <EntityType Name="certificate">
+          <Key>
+            <PropertyRef Name="empid" />
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="empid" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="cid" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="datecompleted" Type="date" />
+        </EntityType>
+        <EntityType Name="CompanyData">
+          <Key>
+            <PropertyRef Name="companyId" />
+          </Key>
+          <Property Name="companyId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="Program" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Job Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="ctitle" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="custno" />
+          </Key>
+          <Property Name="custno" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="custName" Type="varchar" MaxLength="50" />
+          <Property Name="custStreet" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'section8.S8U26.depts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="depts">
+          <Key>
+            <PropertyRef Name="department_id" />
+            <PropertyRef Name="department_name" />
+          </Key>
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="department_name" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DropDownFilter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="Program" Type="varchar" MaxLength="100" />
+          <Property Name="Language" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="empname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="empbirthdate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'section8.S8U26.employees' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="employees">
+          <Property Name="employee_number" Type="char" MaxLength="9" />
+          <Property Name="emp_first_name" Type="varchar" MaxLength="50" />
+          <Property Name="department_id" Type="int" />
+          <Property Name="Date_of_birth" Type="date" />
+          <Property Name="last_name" Type="varchar" MaxLength="30" />
+        </EntityType>-->
+        <EntityType Name="JobDescriptionData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="Program" Type="varchar" MaxLength="100" />
+          <Property Name="Job Description" Type="varchar(max)" />
+          <Property Name="CompanyName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="orderproduct">
+          <Key>
+            <PropertyRef Name="orderno" />
+            <PropertyRef Name="partno" />
+          </Key>
+          <Property Name="orderno" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="partno" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="orderqty" Type="int" />
+          <Property Name="orderprice" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="orderno" />
+          </Key>
+          <Property Name="orderno" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="orderdate" Type="date" Nullable="false" />
+          <Property Name="custno" Type="char" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="part">
+          <Key>
+            <PropertyRef Name="partno" />
+          </Key>
+          <Property Name="partno" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="part_description" Type="varchar" MaxLength="50" />
+          <Property Name="partclass" Type="char" MaxLength="2" />
+          <Property Name="unitprice" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="loc" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'section8.S8U26.Room' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Room">
+          <Property Name="roomID" Type="int" />
+          <Property Name="RoomType" Type="varchar" MaxLength="12" />
+          <Property Name="CampusID" Type="varchar" MaxLength="2" />
+        </EntityType>-->
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="std_id" />
+          </Key>
+          <Property Name="std_id" Type="int" Nullable="false" />
+          <Property Name="std_name" Type="varchar" MaxLength="50" />
+          <Property Name="std_course" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_cid">
+          <End Role="course" Type="Self.course" Multiplicity="1" />
+          <End Role="certificate" Type="Self.certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_custno">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="custno" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="custno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_empid">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="certificate" Type="Self.certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empid" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="empid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_orderno">
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
+          <End Role="orderproduct" Type="Self.orderproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="orderno" />
+            </Principal>
+            <Dependent Role="orderproduct">
+              <PropertyRef Name="orderno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partno">
+          <End Role="part" Type="Self.part" Multiplicity="1" />
+          <End Role="orderproduct" Type="Self.orderproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="part">
+              <PropertyRef Name="partno" />
+            </Principal>
+            <Dependent Role="orderproduct">
+              <PropertyRef Name="partno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="section8ModelStoreContainer">
+          <EntitySet Name="certificate" EntityType="Self.certificate" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="CompanyData" EntityType="Self.CompanyData" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="course" EntityType="Self.course" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="DropDownFilter" EntityType="Self.DropDownFilter" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="JobDescriptionData" EntityType="Self.JobDescriptionData" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="orderproduct" EntityType="Self.orderproduct" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="part" EntityType="Self.part" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="S8U26" store:Type="Tables" />
+          <EntitySet Name="depts" EntityType="Self.depts" store:Type="Tables" store:Schema="S8U26">
+            <DefiningQuery>SELECT 
+    [depts].[department_id] AS [department_id], 
+    [depts].[department_name] AS [department_name]
+    FROM [S8U26].[depts] AS [depts]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_cid" Association="Self.fk_cid">
+            <End Role="course" EntitySet="course" />
+            <End Role="certificate" EntitySet="certificate" />
+          </AssociationSet>
+          <AssociationSet Name="fk_custno" Association="Self.fk_custno">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_empid" Association="Self.fk_empid">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="certificate" EntitySet="certificate" />
+          </AssociationSet>
+          <AssociationSet Name="fk_orderno" Association="Self.fk_orderno">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="orderproduct" EntitySet="orderproduct" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partno" Association="Self.fk_partno">
+            <End Role="part" EntitySet="part" />
+            <End Role="orderproduct" EntitySet="orderproduct" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="section8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="certificate">
+          <Key>
+            <PropertyRef Name="empid" />
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="empid" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cid" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="datecompleted" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="course" Relationship="Self.fk_cid" FromRole="certificate" ToRole="course" />
+          <NavigationProperty Name="employee" Relationship="Self.fk_empid" FromRole="certificate" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ctitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="certificates" Relationship="Self.fk_cid" FromRole="course" ToRole="certificate" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="custno" />
+          </Key>
+          <Property Name="custno" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="custName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="custStreet" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="orders" Relationship="Self.fk_custno" FromRole="customer" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="DropDownFilter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="empname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="empbirthdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="certificates" Relationship="Self.fk_empid" FromRole="employee" ToRole="certificate" />
+        </EntityType>
+        <EntityType Name="JobDescriptionData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Program" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="orderproduct">
+          <Key>
+            <PropertyRef Name="orderno" />
+            <PropertyRef Name="partno" />
+          </Key>
+          <Property Name="orderno" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="partno" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="orderqty" Type="Int32" />
+          <Property Name="orderprice" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="order" Relationship="Self.fk_orderno" FromRole="orderproduct" ToRole="orders" />
+          <NavigationProperty Name="part" Relationship="Self.fk_partno" FromRole="orderproduct" ToRole="part" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderno" />
+          </Key>
+          <Property Name="orderno" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="orderdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="custno" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.fk_custno" FromRole="orders" ToRole="customer" />
+          <NavigationProperty Name="orderproducts" Relationship="Self.fk_orderno" FromRole="orders" ToRole="orderproduct" />
+        </EntityType>
+        <EntityType Name="part">
+          <Key>
+            <PropertyRef Name="partno" />
+          </Key>
+          <Property Name="partno" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="part_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="partclass" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="unitprice" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="loc" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="orderproducts" Relationship="Self.fk_partno" FromRole="part" ToRole="orderproduct" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="std_id" />
+          </Key>
+          <Property Name="std_id" Type="Int32" Nullable="false" />
+          <Property Name="std_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="std_course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dept">
+          <Key>
+            <PropertyRef Name="department_id" />
+            <PropertyRef Name="department_name" />
+          </Key>
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="department_name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_cid">
+          <End Role="course" Type="Self.course" Multiplicity="1" />
+          <End Role="certificate" Type="Self.certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_empid">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="certificate" Type="Self.certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="empid" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="empid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_custno">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="orders" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="custno" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="custno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_orderno">
+          <End Role="orders" Type="Self.order" Multiplicity="1" />
+          <End Role="orderproduct" Type="Self.orderproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="orderno" />
+            </Principal>
+            <Dependent Role="orderproduct">
+              <PropertyRef Name="orderno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partno">
+          <End Role="part" Type="Self.part" Multiplicity="1" />
+          <End Role="orderproduct" Type="Self.orderproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="part">
+              <PropertyRef Name="partno" />
+            </Principal>
+            <Dependent Role="orderproduct">
+              <PropertyRef Name="partno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="section8Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="certificates" EntityType="Self.certificate" />
+          <EntitySet Name="courses" EntityType="Self.course" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="DropDownFilters" EntityType="Self.DropDownFilter" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="JobDescriptionDatas" EntityType="Self.JobDescriptionData" />
+          <EntitySet Name="orderproducts" EntityType="Self.orderproduct" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="parts" EntityType="Self.part" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="depts" EntityType="Self.dept" />
+          <AssociationSet Name="fk_cid" Association="Self.fk_cid">
+            <End Role="course" EntitySet="courses" />
+            <End Role="certificate" EntitySet="certificates" />
+          </AssociationSet>
+          <AssociationSet Name="fk_empid" Association="Self.fk_empid">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="certificate" EntitySet="certificates" />
+          </AssociationSet>
+          <AssociationSet Name="fk_custno" Association="Self.fk_custno">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_orderno" Association="Self.fk_orderno">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="orderproduct" EntitySet="orderproducts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partno" Association="Self.fk_partno">
+            <End Role="part" EntitySet="parts" />
+            <End Role="orderproduct" EntitySet="orderproducts" />
+          </AssociationSet>
+          <EntitySet Name="CompanyDatas" EntityType="section8Model.CompanyData" />
+        </EntityContainer>
+        <EntityType Name="CompanyData">
+          <Key>
+            <PropertyRef Name="companyId" />
+          </Key>
+          <Property Name="companyId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Program" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="section8ModelStoreContainer" CdmEntityContainer="section8Entities">
+          <EntitySetMapping Name="certificates">
+            <EntityTypeMapping TypeName="section8Model.certificate">
+              <MappingFragment StoreEntitySet="certificate">
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="datecompleted" ColumnName="datecompleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="section8Model.course">
+              <MappingFragment StoreEntitySet="course">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="ctitle" ColumnName="ctitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="section8Model.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="custno" ColumnName="custno" />
+                <ScalarProperty Name="custName" ColumnName="custName" />
+                <ScalarProperty Name="custStreet" ColumnName="custStreet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DropDownFilters">
+            <EntityTypeMapping TypeName="section8Model.DropDownFilter">
+              <MappingFragment StoreEntitySet="DropDownFilter">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="section8Model.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="empname" ColumnName="empname" />
+                <ScalarProperty Name="empbirthdate" ColumnName="empbirthdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobDescriptionDatas">
+            <EntityTypeMapping TypeName="section8Model.JobDescriptionData">
+              <MappingFragment StoreEntitySet="JobDescriptionData">
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="Job_Description" ColumnName="Job Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderproducts">
+            <EntityTypeMapping TypeName="section8Model.orderproduct">
+              <MappingFragment StoreEntitySet="orderproduct">
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="partno" ColumnName="partno" />
+                <ScalarProperty Name="orderqty" ColumnName="orderqty" />
+                <ScalarProperty Name="orderprice" ColumnName="orderprice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="section8Model.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="custno" ColumnName="custno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parts">
+            <EntityTypeMapping TypeName="section8Model.part">
+              <MappingFragment StoreEntitySet="part">
+                <ScalarProperty Name="partno" ColumnName="partno" />
+                <ScalarProperty Name="part_description" ColumnName="part_description" />
+                <ScalarProperty Name="partclass" ColumnName="partclass" />
+                <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+                <ScalarProperty Name="loc" ColumnName="loc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="section8Model.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="std_id" ColumnName="std_id" />
+                <ScalarProperty Name="std_name" ColumnName="std_name" />
+                <ScalarProperty Name="std_course" ColumnName="std_course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="depts">
+            <EntityTypeMapping TypeName="section8Model.dept">
+              <MappingFragment StoreEntitySet="depts">
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyDatas">
+            <EntityTypeMapping TypeName="section8Model.CompanyData">
+              <MappingFragment StoreEntitySet="CompanyData">
+                <ScalarProperty Name="Job_Description" ColumnName="Job Description" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="companyId" ColumnName="companyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

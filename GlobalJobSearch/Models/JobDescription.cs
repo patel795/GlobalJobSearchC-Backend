@@ -12,5 +12,9 @@ namespace GlobalJobSearch.Models
         public String Program { get; set; }
 
         public String jobDescription { get; set; }
+
+        public String language { get; set; }
+
+        public String CompanyName { get; set; }
     }
 }

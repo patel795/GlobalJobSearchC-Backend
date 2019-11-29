@@ -295,9 +295,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DropDownFilterDataAccess\DropDownFilterDataAccess.csproj">
-      <Project>{72b5e921-1c07-4b2f-b8e3-eca51e707453}</Project>
-      <Name>DropDownFilterDataAccess</Name>
+    <ProjectReference Include="..\DropDownFilterDataAccessSQL\DropDownFilterDataAccessSQL.csproj">
+      <Project>{626aadc9-4216-4333-88e1-172729375bd1}</Project>
+      <Name>DropDownFilterDataAccessSQL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

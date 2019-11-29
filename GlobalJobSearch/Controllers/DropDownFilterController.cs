@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using DropDownFilterDataAccess;
+using DropDownFilterDataAccessSQL;
 
 namespace GlobalJobSearch.Controllers
 {
@@ -12,7 +12,7 @@ namespace GlobalJobSearch.Controllers
     {
         public IEnumerable<DropDownFilter> Get()
         {
-            using (GlobalJobSearchAppEntities entities = new GlobalJobSearchAppEntities())
+            using (section8Entities entities = new section8Entities())
             {
                 return entities.DropDownFilters.ToList();
             }
@@ -20,7 +20,7 @@ namespace GlobalJobSearch.Controllers
 
         public DropDownFilter Get(int id)
         {
-            using (GlobalJobSearchAppEntities entities = new GlobalJobSearchAppEntities())
+            using (section8Entities entities = new section8Entities())
             {
                 return entities.DropDownFilters.FirstOrDefault(e => e.ID == id);
             }
